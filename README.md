@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# JobPilot
+
+JobPilot is a full-stack AI-powered job hunting assistant. Set up your profile once, upload your resume, and the agent discovers relevant jobs, scores them against your profile with GPT-4o, and researches each company before you apply.
+
+## How It Works
+
+1. **Sign up** with Google or GitHub via InsForge auth
+2. **Build your profile** — fill out resume fields manually, or upload a PDF and let GPT-4o extract them automatically
+3. **Find jobs** — search by title and location; the agent pulls listings from Adzuna and scores each one 0-100 against your profile, with matched/missing skills and a reason
+4. **Research companies** — one click sends a Browserbase + Stagehand session to browse the company's public pages, and GPT-4o builds a structured dossier (overview, tech stack, culture, interview prep)
+5. **Apply** — review the job and dossier, then click through to the original posting
+
+Everything is tracked on a dashboard with PostHog-powered analytics and a recent activity feed.
+
+## Pages
+
+```
+/                  Homepage
+/login             Auth (Google + GitHub OAuth)
+/dashboard         Overview, recent activity, analytics
+/find-jobs         Search controls + full jobs list
+/find-jobs/[id]    Job details + company research
+/profile           Profile form, resume management
+```
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org) (App Router) + React + TypeScript
+- [Tailwind CSS](https://tailwindcss.com)
+- [InsForge](https://insforge.dev) — auth, database, storage
+- [Adzuna API](https://developer.adzuna.com) — job discovery
+- GPT-4o — job matching, resume parsing/generation, company dossiers
+- [Browserbase](https://www.browserbase.com) + [Stagehand](https://www.stagehand.dev) — company research browsing
+- [PostHog](https://posthog.com) — product analytics
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See `context/project-overview.md` for the full product spec and `context/build-plan.md` / `context/progress-tracker.md` for current build status.
